@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "fields": {
+    "record_id": {"type": "text", "required": true},
+    "transaction_date": {"type": "date", "required": true},
+    "customer_name": {"type": "text", "required": true},
+    "description": {"type": "text", "required": false},
+    "amount": {"type": "decimal", "required": true, "min": "0.01"},
+    "category": {"type": "text", "required": true, "case": "lower", "allowed": ["hardware", "service", "software"]},
+    "subcategory": {"type": "text", "required": true, "case": "lower", "allowed": ["accessories", "devices", "components", "consulting", "implementation", "support", "licenses", "subscriptions", "training"]},
+    "sales_channel": {"type": "text", "required": true, "case": "lower", "allowed": ["direct", "partner", "online"]},
+    "region": {"type": "text", "required": true, "case": "lower", "allowed": ["north", "south", "east", "west"]}
+  },
+  "aliases": {
+    "record_id": ["record_id", "order id", "pedido", "id venda"],
+    "transaction_date": ["transaction_date", "order date", "data", "data venda"],
+    "customer_name": ["customer_name", "customer", "client", "cliente"],
+    "description": ["description", "item", "descricao"],
+    "amount": ["amount", "total", "valor", "valor total"],
+    "category": ["category", "type", "categoria"],
+    "subcategory": ["subcategory", "sub-category", "subcategoria"],
+    "sales_channel": ["sales_channel", "channel", "canal"],
+    "region": ["region", "regiao"]
+  },
+  "category_subcategories": {
+    "hardware": ["accessories", "devices", "components"],
+    "service": ["consulting", "implementation", "support"],
+    "software": ["licenses", "subscriptions", "training"]
+  },
+  "date_formats": ["%Y-%m-%d", "%d/%m/%Y", "%m/%d/%Y"],
+  "null_tokens": ["", "n/a", "null", "none", "-"],
+  "duplicate_key": ["record_id"],
+  "reason_messages": {
+    "MISSING_REQUIRED": "A required field is empty.",
+    "INVALID_DATE": "The date does not match a supported format or is ambiguous.",
+    "INVALID_DECIMAL": "The amount is not a valid decimal number.",
+    "BELOW_MINIMUM": "The amount is below the configured minimum.",
+    "INVALID_CATEGORY": "The category is outside the allowed list.",
+    "INVALID_SUBCATEGORY": "The subcategory is outside the allowed list.",
+    "INVALID_SALES_CHANNEL": "The sales channel is outside the allowed list.",
+    "INVALID_REGION": "The region is outside the allowed list.",
+    "CATEGORY_SUBCATEGORY_MISMATCH": "The subcategory does not belong to the category.",
+    "DUPLICATE_KEY": "This identifier was already seen in this run."
+  }
+}

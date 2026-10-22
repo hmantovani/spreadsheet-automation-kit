@@ -1,0 +1,26 @@
+# Python and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Environment and local tooling
+.env
+.env.*
+.pytest_cache/
+.mypy_cache/
+
+# Generated inputs and outputs
+data/raw/
+data/processed/
+exports/
+reports/
+outputs/
+*.egg-info/
+
+# OS files
+.DS_Store
+Thumbs.db
+scripts/node_modules/
+sample_data/.fixture-preview.png
+sample_data/*.inspect.ndjson
